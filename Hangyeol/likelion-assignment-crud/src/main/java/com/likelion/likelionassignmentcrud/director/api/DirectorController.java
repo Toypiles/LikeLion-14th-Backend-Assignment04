@@ -57,7 +57,7 @@ public class DirectorController {
 
     @PatchMapping("/{directorId}")
     @Operation(summary = "감독 정보 수정", description = "감독 ID를 통해 기존 감독의 정보를 수정합니다.")
-    public ApiResTemplate<Void> directorUpdate(@PathVariable("directorId") Long directorId, @RequestBody DirectorUpdateRequestDto directorUpdateRequestDto){
+    public ApiResTemplate<Void> directorUpdate(@PathVariable("directorId") Long directorId, @RequestBody @Valid DirectorUpdateRequestDto directorUpdateRequestDto){
         directorService.directorUpdate(directorId, directorUpdateRequestDto);
         return ApiResTemplate.successWithNoContent(SuccessCode.DIRECTOR_UPDATE_SUCCESS);
     }
